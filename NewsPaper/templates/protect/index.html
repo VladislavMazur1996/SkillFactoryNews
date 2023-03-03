@@ -1,0 +1,15 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+<div class="container px-lg-1">
+    <div class="text-center">
+        <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+            <h2> Войти в систему </h2>
+            <h2>Страница авторизованного пользователя {{request.user.username}}</h2>
+            <div> Здесь может содержаться персональная информация для каждого пользователя </div>
+
+            <button> <a href="sign/logout/">Выйти</a> </button>
+        <div>
+    </div>
+</div>
+{% endblock %}

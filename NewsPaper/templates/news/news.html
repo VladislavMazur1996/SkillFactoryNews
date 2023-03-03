@@ -1,0 +1,71 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_tags %}
+
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+    {% if posts %}
+    <div class="container px-lg-1">
+        <div class="text-center">
+            <div class="m-4 m-lg-1">
+                <form action="" method="get">
+                   {{ filterset.form }}
+                   <input type="submit" value="Найти" />
+                </form>
+            <div>
+        </div>
+    </div>
+        {% for post in posts%}
+            <header class="py-1">
+                <div class="container px-lg-5">
+                    <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                        <div class="m-1 m-lg-1">
+                            <h1 class="display-5 fw-bold">
+                            </h1>
+                            <p1><b><big> {{ post.title|truncatechars:20 }}</big></b></p1>
+                                <br>
+                            <p2>{{ post.creating_dt|date:"d M Y" }}</p2>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        {% endfor %}
+                <div class="container px-lg-5">
+                    <div class="bg-light rounded-3 text-center">
+                        <div class="m-4 m-lg-5">
+                            <h1 class="display-5 fw-bold"></h1>
+                            {% if page_obj.has_previous %}
+                               <a href="?{% url_replace page=1 %}">1</a>
+                               {% if page_obj.previous_page_number != 1 %}
+                                   <a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
+                               {% endif %}
+                            {% endif %}
+                               {{ page_obj.number }}
+                            {% if page_obj.has_next %}
+                               <a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
+                               {% if paginator.num_pages != page_obj.next_page_number %}
+                                   <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
+                               {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+    {% else %}
+            <header class="py-5">
+                <div class="container px-lg-5">
+                    <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                        <div class="m-4 m-lg-5">
+                            <h1 class="display-5 fw-bold">
+                            </h1>
+                            <p class="fs-4">
+                                <h2>Такие новости ещё не появились.</h2>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+    {% endif %}
+{% endblock content %}
+
+

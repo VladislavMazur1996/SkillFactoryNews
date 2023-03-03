@@ -1,0 +1,17 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+<div class="container px-lg-1">
+    <div class="text-center">
+        <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+          <h2> Войти в систему </h2>
+          <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Продолжить">
+          </form>
+        <div>
+    </div>
+</div>
+{% endblock %}
+

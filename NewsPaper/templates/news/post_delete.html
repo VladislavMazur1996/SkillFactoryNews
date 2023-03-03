@@ -1,0 +1,20 @@
+{% extends 'flatpages/default.html' %}
+
+
+{% block content %}
+<header class="py-5">
+    <div class="container px-lg-5">
+        <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+            <div class="m-4 m-lg-5">
+                <h1 class="display-5 fw-bold">Удаление товара</h1>
+                <hr>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <p>Если вы уверены и хотите удалить статью {{ Object.title }}, нажмите на кнопку ниже.</p>
+                    <input type="submit" value="Подтвердить" />
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock content %}

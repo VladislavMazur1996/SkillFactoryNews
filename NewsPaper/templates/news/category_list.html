@@ -1,0 +1,75 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_tags %}
+{% load static%}
+
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+    {% if category_news_list %}
+    <div class="container px-lg-1">
+        <div class="text-center">
+            <div class="m-4 m-lg-1">
+                <form action="" method="get">
+                   {{ filterset.form }}
+                   <input type="submit" value="Найти" />
+                    <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                        <h1> Категория: {{ category.name }}</h1>
+                        <p><a href="{% url 'subscribe' category.id  %}" class="btn btn-secondary btn-sm">Подписаться</a></p>
+                    </div>
+                </form>
+            <div>
+        </div>
+    </div>
+        {% for post in category_news_list %}
+            <header class="py-1">
+                <div class="container px-lg-5">
+                    <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                        <div class="m-1 m-lg-1">
+                            <h1 class="display-5 fw-bold">
+                            </h1>
+                            <p1><b><big> {{ post.title|truncatechars:90 }}</big></b></p1>
+                                <br>
+                            <p2>Категории: {{ post.category }}</p2>
+                            <p2>Дата публикации: {{ post.creating_dt|date:"d M Y" }}</p2>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        {% endfor %}
+                <div class="container px-lg-5">
+                    <div class="bg-light rounded-3 text-center">
+                        <div class="m-4 m-lg-5">
+                            <h1 class="display-5 fw-bold"></h1>
+                            {% if page_obj.has_previous %}
+                               <a href="?{% url_replace page=1 %}">1</a>
+                               {% if page_obj.previous_page_number != 1 %}
+                                   <a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
+                               {% endif %}
+                            {% endif %}
+                               {{ page_obj.number }}
+                            {% if page_obj.has_next %}
+                               <a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
+                               {% if paginator.num_pages != page_obj.next_page_number %}
+                                   <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
+                               {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+    {% else %}
+            <header class="py-5">
+                <div class="container px-lg-5">
+                    <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                        <div class="m-4 m-lg-5">
+                            <h1 class="display-5 fw-bold">
+                            </h1>
+                            <p class="fs-4">
+                                <h2>Новости в данной категории ещё не появились.</h2>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+    {% endif %}
+{% endblock content %}

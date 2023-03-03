@@ -1,0 +1,20 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+<div class="container px-lg-1">
+    <div class="text-center">
+        <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+            <h2> Войти в систему </h2>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+        <div>
+    </div>
+</div>
+<input  type="submit" value="Войти" class="p-1 p-lg-2 bg-light rounded-1 text-center">
+<button class="p-1 p-lg-2 bg-light rounded-1 text-center"> <a href="/sign/signup" > Регистрация </a></button>
+</div>
+{% endblock %}
