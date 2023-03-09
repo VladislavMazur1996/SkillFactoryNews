@@ -1,6 +1,6 @@
 {% extends 'flatpages/default.html' %}
+{% load static %}
 {% load custom_tags %}
-
 {% block title %}
 {% endblock title %}
 
@@ -17,19 +17,19 @@
         </div>
     </div>
         {% for post in posts%}
-            <header class="py-1">
+            <a href= ' {{post.id}} ' class="text" ><header class="py-1">
                 <div class="container px-lg-5">
                     <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
                         <div class="m-1 m-lg-1">
                             <h1 class="display-5 fw-bold">
                             </h1>
-                            <p1><b><big> {{ post.title|truncatechars:20 }}</big></b></p1>
+                            <p1><b><big>{{ post.title|truncatechars:20 }}</big></b></p1>
                                 <br>
                             <p2>{{ post.creating_dt|date:"d M Y" }}</p2>
                         </div>
                     </div>
                 </div>
-            </header>
+            </header></a>
         {% endfor %}
                 <div class="container px-lg-5">
                     <div class="bg-light rounded-3 text-center">

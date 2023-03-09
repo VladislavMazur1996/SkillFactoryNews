@@ -44,6 +44,7 @@ def my_job():
         to=subscriber,
     )
     msg.attach_alternative(html_content, 'text/html')
+    msg.send()
 
 
 # функция, которая будет удалять неактуальные задачи

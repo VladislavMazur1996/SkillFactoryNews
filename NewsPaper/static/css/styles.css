@@ -223,10 +223,11 @@ sup {
   top: -0.5em;
 }
 
-a {
-  color: #0d6efd;
-  text-decoration: underline;
+a.text {
+  text-decoration: none;
+  color: #666;
 }
+
 a:hover {
   color: #0a58ca;
 }
@@ -627,6 +628,11 @@ progress {
   padding-left: var(--bs-gutter-x, 0.75rem);
   margin-right: auto;
   margin-left: auto;
+}
+
+a.text {
+  text-decoration: none;
+  color: #666;
 }
 
 @media (min-width: 576px) {

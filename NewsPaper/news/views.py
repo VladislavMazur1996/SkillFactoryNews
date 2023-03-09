@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
 from .forms import PostForm
 from .models import Post, Category
 from .filters import PostFilter
@@ -76,3 +77,4 @@ def subscribe(request, pk):
 
     message = f'Вы успешно подписались на рассылку новостей из категории.'
     return render(request, 'news/subscribe.html', {'category': category, 'message': message})
+
