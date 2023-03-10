@@ -1,5 +1,4 @@
 from celery import shared_task
-from django.conf import settings
 from .models import Post, Category
 from datetime import datetime, timedelta
 from django.core.mail import EmailMultiAlternatives
